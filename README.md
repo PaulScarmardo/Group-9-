@@ -2,3 +2,5 @@
 SE Lab Project
 ### Team Members
 Paul Scarmardo - PaulScarmardo (Lead)
+
+Languages Used: Python
