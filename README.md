@@ -4,3 +4,5 @@ SE Lab Project
 Paul Scarmardo - PaulScarmardo (Lead)
 
 Yuexin Xu - yx155
+
+Jessica Oramous - jessoramous
