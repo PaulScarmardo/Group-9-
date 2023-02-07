@@ -15,3 +15,8 @@ Ayden Kilpatrick - Ayden-Kilpatrick
 * Buyers - A buyer should be able to search, compare, buy and return different types of products 
 from different sellers.
 * Sellers - A seller should be able to add, sell and receive payments for their available products.
+
+### Languages
+* Python
+* MySQL
+* Django
