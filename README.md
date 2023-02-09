@@ -11,7 +11,7 @@ Ayden Kilpatrick - Ayden-Kilpatrick
 
 ## Objective - create a succefully working e-commerce site with specific requirements
 ## Description:
-The e-commerce site allows different users (buyers, sellers, admins) to login and perform their desired actions before logging out. Buyers can search and purchase products from sellers, and admins can oversee the actions of these buyers and sellers. More details regarding the functionalities of the software are listed below.
+Our e-commerce site, Anazom, allows different users (buyers, sellers, admins) to login and perform their desired actions before logging out. Buyers can search and purchase products from sellers, and admins can oversee the actions of these buyers and sellers. More details regarding the functionalities of the software are listed below.
 
 ## Features:
 ### Stores Online Transactions 
