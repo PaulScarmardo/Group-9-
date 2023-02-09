@@ -13,7 +13,7 @@ Ayden Kilpatrick - Ayden-Kilpatrick
 ## Description:
 The e-commerce site allows different users (buyers, sellers, admins) to login and perform their desired actions before logging out. Buyers can search and purchase products from sellers, and admins can oversee the actions of these buyers and sellers. More details regarding the functionalities of the software are listed below.
 
-## Features
+## Features:
 ### Stores Online Transactions 
 
 	3.1.1	Description and Priority  
