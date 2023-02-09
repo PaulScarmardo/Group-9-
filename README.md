@@ -16,7 +16,7 @@ Our e-commerce site, Anazom, allows different users (buyers, sellers, admins) to
 ## Features:
 ### Stores Online Transactions 
 
-	3.1.1	Description and Priority  
+	**Description and Priority**
 
 	Whenever a buyer purchases an item from a seller, the information regarding that transaction is recorded and stored in the system database. This information is then kept available for reference purposes to both the buyer and the seller. This feature is of low priority. 
 
