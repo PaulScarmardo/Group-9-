@@ -9,10 +9,10 @@ Jessica Oramous - jessoramous
 
 Ayden Kilpatrick - Ayden-Kilpatrick
 
-### Objective - create a succefully working e-commerce site with specific requirements
+# Objective - create a succefully working e-commerce site with specific requirements
 
-### Features
-# Stores Online Transactions 
+# Features
+### Stores Online Transactions 
 
 3.1.1	Description and Priority  
 
@@ -34,7 +34,7 @@ REQ-4: Displays all of the seller’s transaction history upon request
 
 REQ-5: Provide a notice message if the buyer or seller’s transaction history is 				   empty when display is requested 
 
-# Seller Management 
+### Seller Management 
 
 	3.2.1	Description and Priority 
 
@@ -52,7 +52,7 @@ REQ-5: Provide a notice message if the buyer or seller’s transaction history i
 
 	REQ-3: Be able to accept payment 
 
-# Login/Logout 
+### Login/Logout 
 
 	3.3.1 Description and Priority 
 
@@ -70,7 +70,7 @@ REQ-5: Provide a notice message if the buyer or seller’s transaction history i
 
 	REQ-3: User will be able to logout of their account successfully 
 
-### Languages
+# Languages
 * Python
 * MySQL
 * Django
