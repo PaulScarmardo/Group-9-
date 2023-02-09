@@ -11,7 +11,7 @@ Ayden Kilpatrick - Ayden-Kilpatrick
 
 ### Objective - create a succefully working e-commerce site with specific requirements
 
-### Requirements
+### Features
 # Stores Online Transactions 
 
 3.1.1	Description and Priority  
