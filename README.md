@@ -9,6 +9,11 @@ Jessica Oramous - jessoramous
 
 Ayden Kilpatrick - Ayden-Kilpatrick
 
+## Programming Languages
+* Python
+* MySQL
+* Django
+
 ## Objective - create a succefully working e-commerce site with specific requirements
 ## Description:
 Our e-commerce site, Anazom, allows different users (buyers, sellers, admins) to login and perform their desired actions before logging out. Buyers can search and purchase products from sellers, and admins can oversee the actions of these buyers and sellers. More details regarding the functionalities of the software are listed below.
@@ -117,8 +122,3 @@ Our e-commerce site, Anazom, allows different users (buyers, sellers, admins) to
 	REQ-4: checkout 
 
 	REQ-6: return a product 
-
-## Languages
-* Python
-* MySQL
-* Django
