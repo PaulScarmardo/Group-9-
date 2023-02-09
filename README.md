@@ -40,7 +40,7 @@ The e-commerce site allows different users (buyers, sellers, admins) to login an
 
 	3.2.1	Description and Priority 
 
-	Sellers will have the ability to add an item to the site and customize a variety of categories 	of the item such as: price, name, and description. Once added, the item will be available to buyers for purchase. This feature is medium priority. 
+	Sellers will have the ability to add an item to the site and customize a variety of categories of the item such as: price, name, and description. Once added, the item will be available to buyers for purchase. This feature is medium priority. 
 
 	3.2.2	Stimulus Response/Sequences 
 
