@@ -58,7 +58,7 @@ The e-commerce site allows different users (buyers, sellers, admins) to login an
 
 	3.3.1 Description and Priority 
 
-	Users will have the ability to login and logout of their accounts using a username and 	password. This feature is of high priority. 
+	Users will have the ability to login and logout of their accounts using a username and password. This feature is of high priority. 
 
 	3.3.2 Stimulus Response/Sequences 
 
@@ -75,7 +75,7 @@ The e-commerce site allows different users (buyers, sellers, admins) to login an
 ### Admin Permissions
 	3.4.1 Description and Priority 
 
-	Admins can oversee the actions of different users and perform the operations necessary to maintain a positive shopping environment. Admins can also manage what categories of 	items Anazom sells. This feature is of medium priority. 
+	Admins can oversee the actions of different users and perform the operations necessary to maintain a positive shopping environment. Admins can also manage what categories of items Anazom sells. This feature is of medium priority. 
 
 	3.4.2 Stimulus Response/Sequences 
 
