@@ -1,4 +1,4 @@
-os: windows # => 10
+os: windows # => 1
 language: python # => 2
 python: # => 3
   - "3.10.10"
