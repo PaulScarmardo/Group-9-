@@ -1,3 +1,4 @@
+version: 2.1
 os: windows 10 # => 1
 language: python # => 2
 python: # => 3
