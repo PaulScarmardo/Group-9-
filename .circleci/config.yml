@@ -4,6 +4,7 @@ python: # => 3
   - "3.6"
   - "3.7"
   - "3.8"
+jobs: # => 4
 env: # => 5
   -DJANGO=4.1.7 DB=sqlite
 install: #=> 6
