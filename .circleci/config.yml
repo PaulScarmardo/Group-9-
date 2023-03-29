@@ -1,4 +1,4 @@
-os: windows # => 1
+os: windows 10 # => 1
 language: python # => 2
 python: # => 3
   - "3.6"
@@ -7,7 +7,6 @@ python: # => 3
 jobs: # => 4
 jobs:
   say-hello:
-   
     docker:
       - image: cimg/base:stable
     steps:
