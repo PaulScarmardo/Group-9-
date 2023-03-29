@@ -9,4 +9,4 @@ env: # => 5
 install: #=> 6
   - python -m pip install requirements.txt
 script: # => 7
-  - python mysite/manage.py test
+  - python manage.py runserver
