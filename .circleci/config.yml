@@ -7,6 +7,8 @@ python:
   - "3.8"
 env:
   -DJANGO=4.1 DB=sqlite
+install:
+  - python -m pip install requirements.txt
 jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
