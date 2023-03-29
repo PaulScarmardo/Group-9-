@@ -1,10 +1,12 @@
 os: windows # => 1
 language: python # => 2
 python: # => 3
-  - "3.10.10"
+  - "3.6"
+  - "3.7"
+  - "3.8"
 env: # => 5
   -DJANGO=4.1.7 DB=sqlite
 install: #=> 6
   - pip install -r requirements.txt
 script: # => 7
-  - python manage.py test
+  - python mysite/manage.py test
