@@ -7,6 +7,7 @@ jobs:
       - image: "circleci/python:3.8"
     steps:
       - checkout
+      - run: pip install -r requirements.txt
       - run: python3 store/views/checkout.py
   test:
     working_directory: ~/circleci-python
