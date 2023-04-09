@@ -15,7 +15,7 @@ jobs:
       - image: "circleci/python:3.8"
     steps:
       - checkout
-      - run: python3 store-test.py
+      - run: python3 /store/tests/test_login.py
 
 workflows:
   build_and_test:
