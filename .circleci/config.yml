@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - run: pip install -r requirements.txt
-      - run: python3 store/tests/test_login.py
+      - run: python3 manage.py test store
 
 workflows:
   build_and_test:
