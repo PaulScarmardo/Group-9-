@@ -7,7 +7,7 @@ jobs:
       - image: "circleci/python:3.8"
     steps:
       - checkout
-      - run: python3 /store/views/checkout.py
+      - run: python3 checkout.py
   test:
     working_directory: ~/circleci-python
     docker:
