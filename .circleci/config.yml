@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run: pip install -r requirements.txt
-      - run: python3 store/views/checkout.py
+      - run: python3 manage.py runserver
   test:
     working_directory: ~/circleci-python
     docker:
