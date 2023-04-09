@@ -15,12 +15,16 @@ class Signup (View):
         phone = postData.get ('phone')
         email = postData.get ('email')
         password = postData.get ('password')
+        userType = postData.get('user_class')
+        balance = 0
         # validation
         value = {
             'first_name': first_name,
             'last_name': last_name,
             'phone': phone,
-            'email': email
+            'email': email,
+            'userType': userType,
+            'balance': balance
         }
         error_message = None
 
@@ -28,7 +32,9 @@ class Signup (View):
                              last_name=last_name,
                              phone=phone,
                              email=email,
-                             password=password)
+                             password=password,
+                             userType=userType,
+                             balance=balance)
         error_message = self.validateCustomer (customer)
 
         if not error_message:
@@ -47,12 +53,12 @@ class Signup (View):
         error_message = None
         if (not customer.first_name):
             error_message = "Please Enter your First Name !!"
-        elif len (customer.first_name) < 3:
-            error_message = 'First Name must be 3 char long or more'
+        elif len (customer.first_name) < 2:
+            error_message = 'First Name must be 2 char long or more'
         elif not customer.last_name:
             error_message = 'Please Enter your Last Name'
-        elif len (customer.last_name) < 3:
-            error_message = 'Last Name must be 3 char long or more'
+        elif len (customer.last_name) < 2:
+            error_message = 'Last Name must be 2 char long or more'
         elif not customer.phone:
             error_message = 'Enter your Phone Number'
         elif len (customer.phone) < 10:
@@ -64,5 +70,7 @@ class Signup (View):
         elif customer.isExists ():
             error_message = 'Email Address Already Registered..'
         # saving
+        elif not customer.userType:
+            error_message = 'Please select the type of user you are registering as'
 
         return error_message

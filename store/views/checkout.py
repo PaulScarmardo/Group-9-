@@ -15,17 +15,39 @@ class CheckOut(View):
         customer = request.session.get('customer')
         cart = request.session.get('cart')
         products = Products.get_products_by_id(list(cart.keys()))
-        print(address, phone, customer, cart, products)
-
+        
+        total = 0
         for product in products:
-            print(cart.get(str(product.id)))
-            order = Order(customer=Customer(id=customer),
-                          product=product,
-                          price=product.price,
-                          address=address,
-                          phone=phone,
-                          quantity=cart.get(str(product.id)))
-            order.save()
-        request.session['cart'] = {}
+            total += (product.price * cart.get(str(product.id)))
+        
+        error_message = None
+        if total > Customer.objects.get(id= request.session.get('customer')).balance:
+            error_message = "Not enough balance. Please update your balance before checking out."
+            
+        if not error_message:
+            print(address, phone, customer, cart, products)
 
-        return redirect('cart')
+            for product in products:
+                print(cart.get(str(product.id)))
+                order = Order(customer=Customer(id=customer),
+                            product=product,
+                            price=product.price,
+                            address=address,
+                            phone=phone,
+                            quantity=cart.get(str(product.id)),
+                            seller=product.seller)
+                order.save()
+                buyer = Customer.objects.get(id= request.session.get('customer'))
+                buyer.balance -= (product.price * cart.get(str(product.id)))
+                buyer.save()
+                seller = Customer.get_customer_by_email(product.seller)
+                seller.balance += (product.price * cart.get(str(product.id)))
+                seller.save()
+            request.session['cart'] = {}
+
+            return redirect('cart')
+        else:
+            data = {
+                'error': error_message
+            }
+            return render (request, 'cart.html', data)

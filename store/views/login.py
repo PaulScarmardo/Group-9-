@@ -25,7 +25,12 @@ class Login(View):
                     return HttpResponseRedirect (Login.return_url)
                 else:
                     Login.return_url = None
-                    return redirect ('homepage')
+                    if customer.userType == 'buyer':
+                        return redirect ('store')
+                    elif customer.userType == 'seller':
+                        return redirect ('sellerMenu')
+                    elif customer.userType == 'admin':
+                        pass
             else:
                 error_message = 'Invalid !!'
         else:

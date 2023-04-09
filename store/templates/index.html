@@ -8,23 +8,36 @@
 <div class="container-fluid mt-3">
 	<div class="row">
 
-
 		<!-- filter -->
 
 		<div class="col-lg-3 mx-auto">
 			<div class="list-group">
 
-				<a href="/" class="list-group-item list-group-item-action btn btn-outline-success">All Products</a>
+				<a href="/store" class="list-group-item list-group-item-action btn btn-outline-success">All Products</a>
 
 				{% for category in categories %}
-				<a href="/?category={{category.id}}"
+				<a href="/store?category={{category.id}}"
 					class="list-group-item list-group-item-action btn btn-outline-success ">{{category.name}}</a>
 				{% endfor %}
 			</div>
 		</div>
 
+
 		<!-- all products -->
 		<div id='products' class="col-lg-9 mx-auto">
+			<form action="/find" method="POST">
+                
+				{% csrf_token %}
+	
+				<div class="text-center col">
+					<input type="text" name="item"
+					 id="" placeholder="" style="width:60%">
+					<button type="submit">Search</button>
+				</div>
+
+				<div class="form-group">
+                </div>
+			</form>
 			<div class="row mx-auto">
 				{% for product in products %}
 				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">

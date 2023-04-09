@@ -30,13 +30,13 @@ class Index(View):
 
         request.session['cart'] = cart
         print('cart' , request.session['cart'])
-        return redirect('homepage')
-
-
+        return HttpResponseRedirect('store')
 
     def get(self , request):
         # print()
-        return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
+        request.session.clear()
+        return HttpResponseRedirect('/login')
+    
 
 def store(request):
     cart = request.session.get('cart')
@@ -56,5 +56,3 @@ def store(request):
 
     print('you are : ', request.session.get('email'))
     return render(request, 'index.html', data)
-
-

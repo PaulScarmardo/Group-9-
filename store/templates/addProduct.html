@@ -1,0 +1,82 @@
+{% extends 'baseSeller.html' %}
+
+
+{% block content %}
+
+<div class="container mt-4">
+    
+    <div class="p-3 m-3">
+
+        
+        <div class="col-lg-5 rounded mx-auto border pt-4">
+            <div class="text-center col">
+            
+            <!-- <hr> -->
+            <hr>
+            </div>
+            <h3 class="alert alert-success rounded-pill" style="text-align:center">Add New Product</h3>
+            <form action="/addProduct" method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!-- product name -->
+                <div class="form-group">
+                    <label for="">Product Name</label>
+                    <input type="text" name="name"
+                     id="" value="{{values.name}}" class="form-control form-control-sm" 
+                     placeholder="">
+                </div>
+
+                <!-- product price -->
+                <div class="form-group">
+                    <label for="">Price</label>
+                    <input required type="number" name="price" 
+                    id="" value="{{values.price}}" class="form-control form-control-sm"
+                    >
+                </div>
+
+                <!-- product category -->
+                <div class="form-group">
+                    <label for="">Category</label><br>
+                    <select name="category" id="category">
+                        <option value="Gifts">Gifts</option>
+                        <option value="Health & Personal Care">Health & Personal Care</option>
+                        <option value="Home & Kitchen">Home & Kitchen</option>
+                        <option value="Books">Books</option>
+                        <option value="Shoes & Handbags">Shoes & Handbags</option>
+                        <option value="Watches">Watches</option>
+                        <option value="Kids-Clothing">Kids-Clothing</option>
+                        <option value="Men-Clothing">Men-Clothing</option>
+                        <option value="Women-Clothing">Women-Clothing</option>
+                    </select>
+                </div>
+
+                <!-- product description -->
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <input type="text" name="description" id=""
+                    value="{{values.description}}" 
+                    class=" form-control-sm form-control">
+                </div>
+
+                <!-- product image -->
+                <div class="form-group"></div>
+                    <label for="">Image Upload</label><br>
+                    <input type="file" id="image" name="image">
+                </div>
+
+                <hr>
+                <div class="text-center col"></div>
+                    <button type="submit" class="btn btn-sm btn-success col-lg-12" style="height:35px; width:44%; left:28%">Register Product</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

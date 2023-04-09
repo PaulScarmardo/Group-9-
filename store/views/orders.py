@@ -11,6 +11,28 @@ class OrderView(View):
 
     def get(self , request ):
         customer = request.session.get('customer')
-        orders = Order.get_orders_by_customer(customer)
-        print(orders)
-        return render(request , 'orders.html'  , {'orders' : orders})
+        user = Customer.objects.get(id= customer)
+        if (user.userType == 'buyer'):
+            orders = Order.get_orders_by_customer(customer)
+            print(orders)
+            return render(request , 'orders.html'  , {'orders' : orders})
+        elif (user.userType == 'seller'):
+            orders = Order.objects.filter(seller=user.email).order_by('-date')
+            return render(request , 'sellerOrder.html'  , {'orders' : orders})
+        elif (user.userType == 'admin'):
+            pass
+    
+    def post(self, request):
+        order = request.POST.get('order')
+        prod = Order.objects.get(id=order)
+        buyer = Customer.objects.get(id= request.session.get('customer'))
+        seller = Customer.get_customer_by_email(prod.product.seller)
+        
+        buyer.balance += (prod.price * prod.quantity)
+        buyer.save()
+        seller.balance -= (prod.price * prod.quantity)
+        seller.save()
+        
+        prod.delete()
+        
+        return redirect('orders')

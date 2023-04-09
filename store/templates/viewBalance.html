@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    
+    <div class="p-3 m-3">
+        <h3 class="alert alert-success rounded-pill" style="text-align:center">Balance: Rs {{balance}}</h3><br>
+        <form action="/viewBalance" method="POST">
+
+            {% csrf_token %}
+
+            {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            {% endif %}
+            <div class="text-center col">
+
+                <div class="form-group">
+                    Enter Amount: <input required type="number" name="amount" 
+                    id="" value="{{values.amount}}" style="width:15%; left:38%"
+                    >
+                </div>
+            
+            </div>
+
+                <button type="submit" class="btn btn-sm btn-success col-lg-12" style="height:35px; width:24%; left:38%">Update Balance</button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

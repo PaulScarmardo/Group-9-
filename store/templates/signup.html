@@ -70,11 +70,17 @@
                      class="form-control form-control-sm">
                 </div>
 
-                <!--Checkme button-->
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label d-grid gap-2" for="exampleCheck1">Check me out</label>
+                <!-- user type -->
+                <div class="form-group">
+                    <label for="">Select a user type: </label><br>
+                    <input type="radio" id="buyer" name="user_class" value="buyer">
+                    <label for="buyer">Buyer</label><br>
+                    <input type="radio" id="seller" name="user_class" value="seller">
+                    <label for="seller">Seller</label><br>
+                    <input type="radio" id="admin" name="user_class" value="admin">
+                    <label for="admin">Admin</label><br>
                 </div>
+
                 <hr>
                 <button type="submit" class="btn btn-sm btn-success col-lg-12">Create an account</button>
 

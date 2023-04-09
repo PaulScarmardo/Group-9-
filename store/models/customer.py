@@ -6,6 +6,8 @@ class Customer(models.Model):
     phone = models.CharField(max_length=10)
     email=models.EmailField()
     password = models.CharField(max_length=100)
+    userType = models.CharField(max_length=50)
+    balance = models.IntegerField(default=0)
 
     #to save the data
     def register(self):
@@ -18,7 +20,6 @@ class Customer(models.Model):
             return Customer.objects.get(email= email)
         except:
             return False
-
 
     def isExists(self):
         if Customer.objects.filter(email = self.email):

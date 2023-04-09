@@ -35,10 +35,10 @@
   sticky-top navbar 
   navbar-expand-lg
   text-white">
-    <a class="navbar-brand ms-3 text-dark " href="/">
+    <a class="navbar-brand ms-3 text-dark " href="">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" style="width:50px;height:50px,color:text-light;">E-Commerce</a>
+    <img src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-svg-png-icon-download-28.png" style="width:50px;height:50px,color:text-light;">Anazom</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -47,25 +47,30 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+
+        {% if request.session.customer %}
+
         <li class="nav-item active">
           <a class="nav-link" href="/store">Store <span class="sr-only">(current)</span></a>
         </li>
 
+        {% endif %}
+
           </ul>
-
-
 
 
       <ul class=" navbar-nav my-2 my-lg-0">
 
+        {% if request.session.customer %}
+
+        <li class="nav-item active ">
+          <a class="nav-link" href="/viewBalance">View Balance<span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item active">
           <a class="nav-link" href="/cart">Cart 
             <span class="badge badge-success">{{request.session.cart.keys|length}}</span>
             <span class="sr-only">(current)</span></a>
         </li>
-
-        {% if request.session.customer %}
-        
         <li class="nav-item active ">
           <a class="nav-link" href="/orders">Orders<span class="sr-only">(current)</span></a>
         </li>
