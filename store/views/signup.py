@@ -55,10 +55,14 @@ class Signup (View):
             error_message = "Please Enter your First Name !!"
         elif len (customer.first_name) < 2:
             error_message = 'First Name must be 2 char long or more'
+        elif not customer.first_name.isalpha():
+            error_message = 'First Name must contain only characters'
         elif not customer.last_name:
             error_message = 'Please Enter your Last Name'
         elif len (customer.last_name) < 2:
             error_message = 'Last Name must be 2 char long or more'
+        elif not customer.last_name.isalpha():
+            error_message = 'Last Name must contain only characters'
         elif not customer.phone:
             error_message = 'Enter your Phone Number'
         elif len (customer.password) < 5:
@@ -66,7 +70,7 @@ class Signup (View):
         elif len (customer.email) < 5:
             error_message = 'Email must be 5 char long'
         elif customer.isExists ():
-            error_message = 'Email Address Already Registered..'
+            error_message = 'This Email address has already been registered'
         # saving
         elif not customer.userType:
             error_message = 'Please select the type of user you are registering as'
