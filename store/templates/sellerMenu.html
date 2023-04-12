@@ -31,6 +31,7 @@
                     <th>Category</th>
                     <th>Description</th>
                     <th>Price</th>
+                    <th>In Stock</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -43,6 +44,7 @@
                     <td>{{item.category}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
                     <td>
                         <form action="/delete" method="POST" class="btn-block">
                             {% csrf_token %}

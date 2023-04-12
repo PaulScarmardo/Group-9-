@@ -28,6 +28,8 @@ class OrderView(View):
         buyer = Customer.objects.get(id= request.session.get('customer'))
         seller = Customer.get_customer_by_email(prod.product.seller)
         
+        prod.product.quantity += prod.quantity
+        prod.product.save()
         buyer.balance += (prod.price * prod.quantity)
         buyer.save()
         seller.balance -= (prod.price * prod.quantity)

@@ -15,6 +15,7 @@ class addProduct(View):
         category = postData.get ('category')
         seller = Customer.objects.get(id= request.session.get('customer')).email
         description = postData.get ('description')
+        quantity = postData.get('quantity')
         image = postData.get('image')
         # validation
         value = {
@@ -22,6 +23,7 @@ class addProduct(View):
             'price': price,
             'category': category,
             'description': description,
+            'quantity': quantity,
             'image': image,
             'seller': seller
         }
@@ -31,6 +33,7 @@ class addProduct(View):
                              price=price,
                              category=Category.objects.get(name= category),
                              description=description,
+                             quantity=quantity,
                              image="uploads/products/"+image,
                              seller=seller)
         error_message = self.validateProduct (product)
@@ -51,6 +54,8 @@ class addProduct(View):
             error_message = "Please enter your product's name!!"
         elif int(product.price) < 1:
             error_message = "The price must be a positive number!"
+        elif int(product.quantity) < 1:
+            error_message = "You must have at least 1 item in stock before registering your product!"
         elif not product.image:
             error_message = "Please provide an image of your product"
         # saving
