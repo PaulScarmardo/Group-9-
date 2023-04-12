@@ -48,6 +48,13 @@ class LoginTest(TestCase):
         })
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Invalid !!', html=True)
+    
+    def test_login_without_password(self):
+        response = self.client.post(reverse('login'), data={
+            'username': self.email,
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Please enter your password!", html=True)
 
     def test_logout(self):
         response = self.client.post(reverse('logout'))
