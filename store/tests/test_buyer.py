@@ -5,14 +5,21 @@ from store.models.category import Category
 from store.models.customer import Customer
 from store.models.orders import Order
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
 
 class BuyerTest(TestCase):
     def setUp(self):
+        User.objects.create_superuser('admin', 'foo@foo.com', 'admin')
+        self.client.login(username='admin', password='admin')
+        session = self.client.session
+        session['customer'] = 123
+        session.save()
         self.category = Category.objects.create(name="testItems")
         self.product = Products.objects.create(name="item1",
                                             price=100,
                                             category=Category.objects.get(name= self.category),
                                             description="test item 1",
+                                            quantity=1,
                                             image="placeholder",
                                             seller="user@seller.com")
         self.customer = Customer.objects.create(first_name="firstName",
@@ -21,7 +28,8 @@ class BuyerTest(TestCase):
                                                 email="user@test.com",
                                                 password=make_password ("pass"),
                                                 userType="buyer",
-                                                balance=0)
+                                                balance=100,
+                                                id=session['customer'])
         
     def test_search(self):
         response = self.client.post(reverse('find'), data={'item': "NonexistentItem"})
@@ -50,17 +58,17 @@ class BuyerTest(TestCase):
                                                 email="user@seller.com",
                                                 password=make_password ("pass"),
                                                 userType="seller",
-                                                balance=100)
-        self.order = Order(customer=Customer(id=self.customer.id),
-                            product=self.product,
-                            price=self.product.price,
-                            address="",
-                            phone="",
-                            quantity=1,
-                            seller="user@seller.com",
-                            id=1)
-        response = self.client.post(reverse('orders'), data={'order': self.order})
+                                                balance=0)
+        self.order = Order.objects.create(customer=Customer(id=self.customer.id),
+                                            product=self.product,
+                                            price=self.product.price,
+                                            address="",
+                                            phone="",
+                                            quantity=1,
+                                            seller="user@seller.com")
+        response = self.client.post(reverse('orders'), data={'order': self.order.id})
         self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('orders'))
         
     def test_sign_up_as_buyer(self):
         response = self.client.post(reverse('signup'), data={"user_class": "buyer"})

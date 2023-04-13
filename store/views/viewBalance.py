@@ -1,12 +1,17 @@
 from django.shortcuts import render , redirect
 from django.views import View
 from store.models.customer import Customer
+from django.views.decorators.cache import cache_control
 
 class viewBalance(View):
 
+    @cache_control(no_cache=True, must_revalidate=True, no_store=True)
     def get(self, request):
-        balance = Customer.objects.get(id= request.session.get('customer')).balance
-        return render (request, 'viewBalance.html', {'balance': balance})
+        if (request.session.get('customer')):
+            balance = Customer.objects.get(id= request.session.get('customer')).balance
+            return render (request, 'viewBalance.html', {'balance': balance})
+        else:
+            return redirect('login')
 
     def post(self, request):
         postData = request.POST

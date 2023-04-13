@@ -3,10 +3,15 @@ from django.views import View
 from store.models.customer import Customer
 from store.models.product import Products
 from store.models.category import Category
+from django.views.decorators.cache import cache_control
 
 class addProduct(View):
+    @cache_control(no_cache=True, must_revalidate=True, no_store=True)
     def get(self, request):
-        return render (request, 'addProduct.html')
+        if (request.session.get('customer')):
+            return render (request, 'addProduct.html')
+        else:
+            return redirect('login')
 
     def post(self, request):
         postData = request.POST

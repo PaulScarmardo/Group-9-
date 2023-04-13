@@ -2,11 +2,13 @@ from django.shortcuts import render , redirect , HttpResponseRedirect
 from django.contrib.auth.hashers import  check_password
 from store.models.customer import Customer
 from django.views import View
+from django.views.decorators.cache import cache_control
 
 
 class Login(View):
     return_url = None
 
+    @cache_control(no_cache=True, must_revalidate=True, no_store=True)
     def get(self, request):
         Login.return_url = request.GET.get ('return_url')
         return render (request, 'login.html')

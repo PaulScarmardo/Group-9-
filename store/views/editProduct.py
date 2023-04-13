@@ -2,13 +2,18 @@ from django.shortcuts import render, redirect
 from django.views import View
 from store.models.product import Products
 from store.models.category import Category
+from django.views.decorators.cache import cache_control
 
 class editProduct(View):
     
+    @cache_control(no_cache=True, must_revalidate=True, no_store=True)
     def post(self, request):
-        product = request.POST.get('item')
-        item = Products.objects.get(id=product)
-        return render (request, 'editProduct.html', {'product': item})
+        if (request.session.get('customer')):
+            product = request.POST.get('item')
+            item = Products.objects.get(id=product)
+            return render (request, 'editProduct.html', {'product': item})
+        else:
+            return redirect('login')
     
     
 def saveProduct(request):

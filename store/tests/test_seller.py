@@ -2,15 +2,22 @@ from django.test import TestCase
 from django.urls import reverse
 from store.models.product import Products
 from store.models.category import Category
+from django.contrib.auth.models import User
 
 class SellerTest(TestCase):
     def setUp(self):
+        User.objects.create_superuser('admin', 'foo@foo.com', 'admin')
+        self.client.login(username='admin', password='admin')
+        session = self.client.session
+        session['customer'] = 123
+        session.save()
         self.category = Category.objects.create(name="testItems")
         self.product = Products.objects.create(name="item1",
                                             price=100,
                                             category=Category.objects.get(name= self.category),
                                             description="test item 1",
                                             image="placeholder",
+                                            quantity=1,
                                             seller="user@seller.com")
 
     def test_add_product_page(self):
@@ -27,6 +34,11 @@ class SellerTest(TestCase):
          response = self.client.post(reverse('saveProduct'), data={'product': self.product.id, 'price': 0})
          self.assertEqual(response.status_code, 200)
          self.assertContains(response, "The price must be a positive number!")
+         
+    def test_product_quantity_error(self):
+         response = self.client.post(reverse('saveProduct'), data={'product': self.product.id, 'price': 3, 'quantity': -1})
+         self.assertEqual(response.status_code, 200)
+         self.assertContains(response, "The number of product in stock cannot be a negative number!")
 
     def test_delete_product(self):
         response = self.client.post(reverse('delete'), data={'item': self.product.id})
