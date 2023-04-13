@@ -13,22 +13,26 @@ class viewBalance(View):
         else:
             return redirect('login')
 
+    @cache_control(no_cache=True, must_revalidate=True, no_store=True)
     def post(self, request):
-        postData = request.POST
-        amount = postData.get('amount')
-        buyer = Customer.objects.get(id= request.session.get('customer'))
-        
-        error_message = None
-        error_message = self.validateAmount (amount)
-        
-        if not error_message:
-            buyer.balance += int(amount)
-            buyer.save() 
+        if (request.session.get('customer')):
+            postData = request.POST
+            amount = postData.get('amount')
+            buyer = Customer.objects.get(id= request.session.get('customer'))
+            
+            error_message = None
+            error_message = self.validateAmount (amount)
+            
+            if not error_message:
+                buyer.balance += int(amount)
+                buyer.save() 
+            else:
+                balance = Customer.objects.get(id= request.session.get('customer')).balance
+                return render (request, 'viewBalance.html', {'error': error_message, 'balance': balance})     
+            
+            return redirect ('viewBalance')
         else:
-            balance = Customer.objects.get(id= request.session.get('customer')).balance
-            return render (request, 'viewBalance.html', {'error': error_message, 'balance': balance})     
-        
-        return redirect ('viewBalance')
+            return redirect('login')
         
     def validateAmount(self, amount):
         error_message = None
