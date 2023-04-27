@@ -10,6 +10,7 @@ from .views.sellerMenu import sellerMenu
 from .views.addProduct import addProduct
 from .views.viewBalance import viewBalance
 from .views.find import find
+from .views.accountError import accountError
 from .views.editProduct import editProduct, delete, saveProduct
 from .middlewares.auth import  auth_middleware
 
@@ -30,4 +31,5 @@ urlpatterns = [
     path('cart', auth_middleware(Cart.as_view()) , name='cart'),
     path('check-out', CheckOut.as_view() , name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
+    path('accountError', accountError.as_view(), name='accountError')
 ]

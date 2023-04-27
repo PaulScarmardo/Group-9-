@@ -1,0 +1,25 @@
+{% block content %}
+
+<div class="container mt-4">
+    
+    <div class="p-3 m-3">
+        <center>
+        <form action="/accountError" method="POST">
+
+            {% csrf_token %}
+
+            <br><br>
+            <p>
+            <div class="">
+                    Your account has been suspended and is currently under review.        
+            </div>
+            </p>
+
+                <button type="submit" class="btn btn-sm btn-success col-lg-12" style="height:35px; width:24%; left:38%">Understood</button>
+
+        </form>
+        </center>
+    </div>
+</div>
+
+{% endblock %}

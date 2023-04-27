@@ -8,6 +8,7 @@ class Customer(models.Model):
     password = models.CharField(max_length=100)
     userType = models.CharField(max_length=50)
     balance = models.IntegerField(default=0)
+    status = models.IntegerField(default=1)
 
     #to save the data
     def register(self):
